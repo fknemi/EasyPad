@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS notebin;
+USE notebin;
+
+CREATE TABLE IF NOT EXISTS notes (
+    id VARCHAR(16) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS note_shares (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    note_id VARCHAR(16) NOT NULL,
+    share_token VARCHAR(32) UNIQUE NOT NULL,
+    can_edit BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (note_id) REFERENCES notes(id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_note_id ON note_shares(note_id);
+CREATE INDEX idx_share_token ON note_shares(share_token);

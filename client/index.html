@@ -1,17 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyPad</title>
-    <link rel="stylesheet" href="./css/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/global.css" />
     <script src="js/global.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h2>EasyPad</h2>
+      </header>
 
-</head>
+      <div class="container">
+        <div class="top-bar">
+          <div class="dates">
+            <span>
+              <span>Created</span>
+              <span id="created-date">--</span>
+            </span>
+            <span>
+              <span>Last Updated</span>
+              <span id="updated-date">--</span>
+            </span>
+          </div>
+          <button id="share" class="share-btn">Share</button>
+        </div>
 
-<body>
-<button type="button" id="testBtn">Testing</button>
-</body>
+        <input id="title" class="title-input" placeholder="Title" />
 
+        <textarea id="content" placeholder="Write markdown..."></textarea>
+
+        <div class="footer">
+          <button id="save" class="save-btn">Save</button>
+          <small id="status"></small>
+        </div>
+      </div>
+
+      <div id="share-modal" class="modal hidden">
+        <div class="modal-box">
+          <h3>Share link</h3>
+          <input id="share-link" readonly />
+          <div class="modal-actions">
+            <button id="copy-link">Copy</button>
+            <button id="close-share">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
